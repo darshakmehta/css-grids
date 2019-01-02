@@ -1,9 +1,5 @@
 :root {
 	--dark-blue: #333745;
-	--off-black: #20222b;
-	--off-white: #a5afd7;
-	--light-blue: #464b5e;
-	--blue: #3c4251;
 	--purple: #8357c5;
 }
 
@@ -44,4 +40,8 @@ body {
 
 .container > img:hover {
 	cursor: pointer;
+}
+
+.text {
+	color: white;
 }
