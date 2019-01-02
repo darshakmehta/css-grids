@@ -1,0 +1,47 @@
+:root {
+	--dark-blue: #333745;
+	--off-black: #20222b;
+	--off-white: #a5afd7;
+	--light-blue: #464b5e;
+	--blue: #3c4251;
+	--purple: #8357c5;
+}
+
+body {
+	background-color: var(--dark-blue); 
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+.header {
+	margin: 0 0 20px 20px;
+}
+
+.btn {
+	margin: 0 0 20px 20px;
+	background: var(--purple);
+    border: none;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.btn:focus {
+	outline: none;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+	grid-row-gap: 20px;
+	grid-column-gap: 10px;
+	justify-items: center;
+}
+
+.container > img {
+	position: relative;
+}
+
+.container > img:hover {
+	cursor: pointer;
+}
