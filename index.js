@@ -13,32 +13,32 @@ $( document ).ready(() => {
         }
         const arr = initializeArr();
         renderImages( arr );
-    	[lastImageOrder, map] = renderOnClick( lastImageOrder, map );
+    	[ lastImageOrder, map ] = renderOnClick( lastImageOrder, map );
     } else {
         const arr = JSON.parse( localStorage.getItem( "lastImageOrder" ) );
         map = new Map( JSON.parse( localStorage.getItem( "imageClickCounter" ) ) );
-        if (arr.length < 8) {
-            for (let i = 0; i < 8; i++) {
-                if (!arr.includes(i)) {
-                    arr.push(i);
+        if ( arr.length < 8 ) {
+            for ( let i = 0; i < 8; i++ ) {
+                if ( !arr.includes( i ) ) {
+                    arr.push( i );
                 }
             }
         }
         renderImages( arr );
-    	[lastImageOrder, map] = renderOnClick( lastImageOrder, map );
+    	[ lastImageOrder, map ] = renderOnClick( lastImageOrder, map );
     }
 
     /* Reset Image Order Handler */
     $('#clearLocalStorage').on("click", () => {
-        if (confirm("Do you want to clear the Image order?")) {
+        if ( confirm( "Do you want to clear the Image order?" ) ) {
         	lastImageOrder = [];
             localStorage.removeItem("lastImageOrder");
             $('.container').empty();
             const arr = initializeArr();
             renderImages(arr);
-            [lastImageOrder, map] = renderOnClick( lastImageOrder, map );
+            [ lastImageOrder, map ] = renderOnClick( lastImageOrder, map );
         } else {
-            alert("Your Image order is intact")
+            alert( "Your Image order is intact" );
         }
     });
 
@@ -50,11 +50,11 @@ $( document ).ready(() => {
     	
     	$('.container').empty();
     	for ( const [key, value] of sortMap ) {
-    		arr.push(key);
+    		arr.push( key );
 		}
 		renderImages(arr);
 		
-		[lastImageOrder, map] = renderOnClick( lastImageOrder, map );
+		[ lastImageOrder, map ] = renderOnClick( lastImageOrder, map );
 	});
 });
 
