@@ -99,7 +99,7 @@ const renderImages = ( arr ) => {
 const renderOnClick = ( arr, map ) => {
 
 	for ( let i = 0; i < 8; i++ ) {
-		if( !arr.includes(i) ) {
+		if( !arr.includes(i) ) { /* Re-rendering after sorting, do not add onClick event for already Clicked Image */
 	        $('#image' + i).on("click", () => {
 	            $('#image' + i).unbind( "click" );
 	            $('#image' + i).css( "cursor", "default" );
