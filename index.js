@@ -12,7 +12,7 @@ $( document ).ready(() => {
         	map = new Map( JSON.parse( localStorage.getItem( "imageClickCounter" ) ) );
         }
         const arr = initializeArr();
-        renderImages( arr );
+        renderImages( arr, map );
     	[ lastImageOrder, map ] = renderOnClick( lastImageOrder, map );
     } else {
         const arr = JSON.parse( localStorage.getItem( "lastImageOrder" ) );
@@ -24,7 +24,7 @@ $( document ).ready(() => {
                 }
             }
         }
-        renderImages( arr );
+        renderImages( arr, map );
     	[ lastImageOrder, map ] = renderOnClick( lastImageOrder, map );
     }
 
@@ -35,7 +35,7 @@ $( document ).ready(() => {
             localStorage.removeItem("lastImageOrder");
             $('.container').empty();
             const arr = initializeArr();
-            renderImages(arr);
+            renderImages( arr, map );
             [ lastImageOrder, map ] = renderOnClick( lastImageOrder, map );
         } else {
             alert( "Your Image order is intact" );
@@ -52,8 +52,7 @@ $( document ).ready(() => {
     	for ( const [key, value] of sortMap ) {
     		arr.push( key );
 		}
-		renderImages(arr);
-		
+		renderImages( arr, map);
 		[ lastImageOrder, map ] = renderOnClick( lastImageOrder, map );
 	});
 });
@@ -81,16 +80,16 @@ const initializeArr = () => {
 }
 
 /* Render Images onStartUp */
-const renderImages = ( arr ) => {
+const renderImages = ( arr, map ) => {
 
     for ( let i = 0; i < 8; i++ ) {
         let src = "images/image" + arr[i] + ".png";
         let img = $('<img />', {
             id: "image" + arr[i],
             src,
-            alt: 'image'
+            alt: 'image',
+            title: `Clicked ${ map.get( arr[i] )} times`
         });
-
         img.appendTo( $('.container') );
     }
 }
@@ -103,6 +102,7 @@ const renderOnClick = ( arr, map ) => {
 	        $('#image' + i).on("click", () => {
 	            $('#image' + i).unbind( "click" );
 	            $('#image' + i).css( "cursor", "default" );
+                $('#image' + i).attr( "title", `Clicked ${ ( map.get( i ) + 1 ) } times`);
 	            arr.push( i );
 	            map.set( i, ( map.get( i ) + 1 ) );
 	            localStorage.setItem( "lastImageOrder", JSON.stringify( arr ) );
