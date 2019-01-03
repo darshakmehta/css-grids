@@ -29,8 +29,8 @@ $( document ).ready(() => {
     }
 
     /* Reset Image Order Handler */
-    $('#clearLocalStorage').on("click", () => {
-        if ( confirm( "Do you want to clear the Image order?" ) ) {
+    $('#reset-image-order').on("click", () => {
+        if ( confirm( "Do you want to reset the Image order?" ) ) {
         	lastImageOrder = [];
             localStorage.removeItem("lastImageOrder");
             $('.container').empty();
@@ -43,7 +43,7 @@ $( document ).ready(() => {
     });
 
     /* High to Low Click Handler */
-    $('#sortByClick').on("click", () => {
+    $('#sort-by-click').on("click", () => {
 
     	const sortMap = sortImage(map);
     	let arr = [];
